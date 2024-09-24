@@ -6,9 +6,9 @@ from train_cypher import examples
 from openaigpt4 import generate_cypher
 
 st.set_page_config(page_title="Search Neo4j")
-st.title("Visa Neo4j POC")
+st.title("Neo4j POC")
 
-openai.api_key = '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'
+openai.api_key = ''
 
 def generate_response(prompt, cypher=True):
     usr_input = [{"role": "user", "content": prompt}]
