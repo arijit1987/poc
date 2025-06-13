@@ -1,0 +1,7 @@
+Component	                       Recommended Network Control
+Azure Key Vault	                 Private Endpoint + IP Restrictions
+Unity Catalog (UC)	             ACLs + IP Access List (Databricks)
+Databricks Model Serving	       NSG + Private Endpoint + IP Allowlist
+Azure App Service / VM	         VNet Integration + NSG
+End-User App	                   HTTPS + Azure AD + IP Restriction
+Azure DevOps Pipeline	           Private Link + Outbound IP Allow on NSG
