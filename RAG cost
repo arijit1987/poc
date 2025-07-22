@@ -1,0 +1,23 @@
+Estimated Monthly Cost Report
+The following cost estimation is based on a sample usage scenario for a medium-sized enterprise application. The actual costs can vary significantly based on the Azure region, specific service configurations, data volume, and usage patterns.
+Scenario Assumptions:
+	•	Data Storage: 100 GB of source documents stored in Azure Files.
+	•	Data Translation: 10 million characters are translated per month using Azure AI Translator.
+	•	Indexing: 1 million documents (averaging 1,000 tokens each) are indexed monthly using the  text-embedding-ada-002  model.
+	•	Queries: The system handles 5,000 queries per day. Each query requires 4,000 tokens of input (query + context) and generates 500 tokens of output using GPT-4.
+	•	Compute: An Azure Databricks all-purpose cluster runs for 8 hours per business day for development and interactive use.
+
+
+
+Cost Breakdown by Service
+	•	Azure File Storage The cost is based on the amount of data stored and the performance tier selected. For 100 GB in the “Hot” tier (pay-as-you-go), the storage cost is minimal. Additional small charges apply for read/write operations.
+	•	Azure AI Translator Service This service is priced based on the number of characters processed. The standard tier costs approximately $10 per million characters. A free tier is available for up to 2 million characters per month.
+	•	Azure OpenAI Service This is the most significant cost driver in this architecture.
+	•	Embeddings (Ada-002): The cost to embed 1 million documents (1 billion tokens) would be approximately $100, assuming a price of $0.10 per 1 million tokens.
+	•	Generation (GPT-4): At 5,000 queries per day, the monthly token consumption is high.
+	•	Input Tokens: 600 million tokens/month.
+	•	Output Tokens: 75 million tokens/month.
+	•	Based on standard GPT-4 pricing of $30/1M input tokens and $60/1M output tokens, the monthly cost is approximately $22,500. Using a more cost-effective model like GPT-4o or GPT-3.5-Turbo could substantially reduce this expense.
+	•	Azure Cosmos DB For a RAG use case, costs are driven by storage and the compute needed for vector searches.
+	•	Storage: Storing the original text and vector embeddings for the assumed data volume might require around 200 GB, costing about $50/month.
+	•	Throughput: Vector search operations consume Request Units (RUs). Estimating 100 million RUs per month would add roughly $30 in a serverless model. Using a provisioned vCore model for more predictable performance could alter this cost.
