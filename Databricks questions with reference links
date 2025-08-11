@@ -1,0 +1,109 @@
+Absolutely! Here’s your refined question set—now enhanced with official Databricks documentation links below each question for easy reference and follow-up. Feel free to copy and paste directly.
+
+⸻
+
+A. Model Hosting & Architecture
+	1.	What are the recommended best practices for secure model hosting on Databricks, particularly in regulated environments like SMBC?
+References:
+	•	https://docs.databricks.com/aws/en/machine-learning/model-serving/
+	•	https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models
+	2.	Can we host models fully within our enterprise network without sending any data to external Databricks-managed services?
+References:
+	•	https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models
+	•	https://docs.databricks.com/aws/en/generative-ai/external-models/
+	3.	How does Databricks handle model endpoint isolation and private network integration (e.g., Azure Private Link)?
+References:
+	•	https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models
+	•	https://docs.databricks.com/gcp/en/machine-learning/model-serving/create-foundation-model-endpoints
+	4.	In the event of multi-region deployments, how is model replication and latency handled?
+References:
+	•	https://docs.databricks.com/aws/en/machine-learning/model-serving/
+	•	https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/
+
+⸻
+
+B. Data Access & Governance
+	5.	How can Unity Catalog be leveraged for granular access control over both model artifacts and training data?
+References:
+	•	https://docs.databricks.com/aws/en/data-governance/unity-catalog/
+	•	https://docs.databricks.com/aws/en/data-governance/unity-catalog/access-control
+	6.	What is the audit trail capability for model execution—can we track who accessed a model and what inputs/outputs were generated?
+References:
+	•	https://docs.databricks.com/aws/en/data-governance/unity-catalog/
+	•	https://docs.databricks.com/aws/en/data-governance/unity-catalog/access-control
+	7.	For hosted models, where exactly are interaction logs and inference requests stored, and how long are they retained?
+References:
+	•	https://docs.databricks.com/aws/en/machine-learning/model-serving/
+	•	https://docs.databricks.com/aws/en/machine-learning/model-serving/manage-serving-endpoints
+
+⸻
+
+C. Compliance & Security
+	8.	What certifications (SOC 2, ISO 27001, etc.) and compliance controls apply to Databricks Hosted Models?
+References:
+	•	(Typically available on the Databricks Trust and Compliance documentation page—not listed above but may require additional search in your portal.)
+	9.	Can Databricks support regional data residency requirements so that no data leaves a given jurisdiction?
+References:
+	•	https://docs.databricks.com/aws/en/machine-learning/model-serving/
+	•	https://docs.databricks.com/aws/en/data-governance/unity-catalog/
+	10.	How does Databricks handle PII masking or filtering for inputs and outputs processed by hosted models?
+References:
+	•	https://docs.databricks.com/aws/en/data-governance/unity-catalog/access-control
+	•	https://docs.databricks.com/aws/en/data-governance/unity-catalog/abac/
+
+⸻
+
+D. AI/BI Genie & Application Integration
+	11.	For AI/BI Genie interactions, what is the data flow—specifically, where are prompts, queries, and generated responses stored?
+References:
+	•	(Documentation for Genie may be found in upcoming or Mosaic AI/GenAI sections—search “Genie Databricks” in your official docs.)
+	12.	Are these stored ephemerally or persistently? Can storage be fully disabled?
+References:
+	•	As above—check the official tool or release documentation for Genie or Mosaic AI.
+	13.	Can Genie integrate with enterprise authentication and custom role-based access control?
+References:
+	•	(Again, check in upcoming Mosaic AI or GenAI toolkit docs—look for “Mosaic AI Gateway” or “Genie authentication”.)
+
+⸻
+
+E. Development, MLOps & Deployment
+	14.	How can MLflow be configured for multi-team collaboration while maintaining model versioning and access control boundaries?
+References:
+	•	https://docs.databricks.com/aws/en/mlflow/models
+	15.	What is the recommended CI/CD pipeline design for deploying models into production in Databricks using MLOps best practices?
+References:
+	•	(Look for “MLflow MLOps Databricks” in official docs—even better, use webinars or solution accelerators if available.)
+	16.	Are there deployment patterns to minimize downtime during model upgrades or retraining cycles?
+References:
+	•	https://docs.databricks.com/aws/en/machine-learning/model-serving/manage-serving-endpoints
+
+⸻
+
+F. Vector Databases & Storage
+	17.	Where exactly is the vector database hosted in a Databricks setup—customer-managed or Databricks-managed infrastructure?
+References:
+	•	https://en.wikipedia.org/wiki/Databricks (for Mosaic AI Vector Search context)
+	•	https://docs.databricks.com/aws/en/machine-learning/model-serving/ (context for Mosaic AI Vector Search integration)
+	18.	What types of metadata and embeddings are stored, and can we enforce data encryption at rest & in transit?
+References:
+	•	https://docs.databricks.com/aws/en/machine-learning/model-serving/
+	•	https://docs.databricks.com/aws/en/data-governance/unity-catalog/access-control
+	19.	Is page-level or document-level chunking supported, and can the chunk identifiers map to business-specific keys?
+References:
+	•	(Search for “Vector Search chunking Databricks” in your official docs or the Mosaic AI section.)
+
+⸻
+
+G. Python & Package Management
+	20.	For open-source Python packages not natively available in Databricks, what is the process for installing and managing dependencies in a controlled, secure manner?
+References:
+	•	https://docs.databricks.com/aws/en/machine-learning/model-serving/create-manage-serving-endpoints
+	•	https://docs.databricks.com/aws/en/mlflow/models
+	21.	Are there sandbox or isolated cluster options for testing custom packages before production rollout?
+References:
+	•	https://docs.databricks.com/aws/en/machine-learning/model-serving/create-manage-serving-endpoints
+	•	https://docs.databricks.com/aws/en/mlflow/models
+
+⸻
+
+Would you like me to lay this out in a formatted Word or email template? Just say the word—I’ve got you covered!
