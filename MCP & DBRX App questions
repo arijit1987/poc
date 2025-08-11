@@ -1,0 +1,63 @@
+Nice catch — thanks! I’ve added a new section specifically for Databricks Apps and MCP (Model Context Protocol) with focused, professional questions and official documentation links under each question so you can copy/paste them straight into your doc.
+
+H. Databricks Apps & MCP (Model Context Protocol) — Additional Questions
+	22.	What are Databricks Apps (capabilities, supported frameworks, hosting model) and what deployment options are available (UI, CLI, CI/CD)?
+References (copy‑paste):
+
+	•	https://docs.databricks.com/aws/en/dev-tools/databricks-apps/
+	•	https://docs.databricks.com/aws/en/dev-tools/databricks-apps/get-started
+	•	https://docs.databricks.com/aws/en/dev-tools/databricks-apps/deploy
+￼
+
+	23.	How do Databricks Apps integrate with platform services (Unity Catalog, Secrets, MLflow, Vector Search / Mosaic AI) and runtime compute (serverless vs cluster-based)?
+References (copy‑paste):
+
+	•	https://docs.databricks.com/aws/en/dev-tools/databricks-apps/key-concepts
+	•	https://docs.databricks.com/aws/en/dev-tools/databricks-apps/networking
+	•	https://docs.databricks.com/aws/en/data-governance/unity-catalog/manage-privileges/
+￼
+
+	24.	What are the recommended security, authentication and authorization models for Apps (OAuth2, app-level permissions, user-context vs service-context execution)? How do we audit app actions?
+References (copy‑paste):
+
+	•	https://docs.databricks.com/aws/en/dev-tools/databricks-apps/auth
+	•	https://docs.databricks.com/aws/en/dev-tools/databricks-apps/permissions
+	•	https://docs.databricks.com/aws/en/dev-tools/cli/reference/permissions-commands
+￼
+
+	25.	What networking and private connectivity options exist for Apps (front-end private connectivity, PrivateLink / Private Service Connect, customer-managed VPC) to meet enterprise network and compliance requirements?
+References (copy‑paste):
+
+	•	https://docs.databricks.com/aws/en/dev-tools/databricks-apps/networking
+	•	https://docs.databricks.com/aws/en/security/network/classic/privatelink
+	•	https://docs.databricks.com/aws/en/security/network/classic/customer-managed-vpc
+￼
+
+	26.	What is the Model Context Protocol (MCP) on Databricks and what features does it provide for connecting agents to tools, data and contextual resources?
+References (copy‑paste):
+
+	•	https://docs.databricks.com/aws/en/generative-ai/mcp/
+	•	https://learn.microsoft.com/en-us/azure/databricks/generative-ai/mcp/
+￼ ￼
+
+	27.	What managed MCP options does Databricks provide (managed MCP servers vs self‑hosted), and what are the constraints / beta considerations for using managed MCP servers?
+References (copy‑paste):
+
+	•	https://docs.databricks.com/aws/en/generative-ai/mcp/managed-mcp
+	•	https://www.databricks.com/blog/announcing-managed-mcp-servers-unity-catalog-and-mosaic-ai-integration
+￼ ￼
+
+	28.	How do MCP servers integrate with Unity Catalog, Vector Search (Mosaic AI), and Databricks Apps — specifically: what scopes/permissions are required for MCP to access catalogs, indices, or custom functions, and how is access audited?
+References (copy‑paste):
+
+	•	https://docs.databricks.com/aws/en/generative-ai/mcp/managed-mcp
+	•	https://docs.databricks.com/aws/en/data-governance/unity-catalog/manage-privileges/
+	•	https://api-docs.databricks.com/python/databricks-ai-bridge/latest/databricks_mcp.html
+￼ ￼
+
+	29.	If we want to host our own MCP server (for tighter control), what are the recommended deployment patterns (host inside Databricks Apps, VM in customer VPC, or container) and how does that affect network/config & security configuration?
+References (copy‑paste):
+
+	•	https://docs.databricks.com/aws/en/generative-ai/mcp/
+	•	https://docs.databricks.com/aws/en/dev-tools/databricks-apps/deploy
+	•	https://docs.databricks.com/aws/en/security/network/classic/customer-managed-vpc
