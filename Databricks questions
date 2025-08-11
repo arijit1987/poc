@@ -1,0 +1,56 @@
+Yes — I can read the image, and it looks like you have an initial bullet list of discussion points for Databricks covering model hosting, access control, compliance, storage, AI/BI Genie, MLflow, vector databases, and more.
+
+Here’s a refined professional-level question set for your Databricks technical meeting, structured for clarity and depth. I’ve grouped and rephrased them to sound precise, business-oriented, and technically actionable.
+
+⸻
+
+A. Model Hosting & Architecture
+	1.	What are the recommended best practices for secure model hosting on Databricks, particularly in regulated environments like SMBC?
+	2.	Can we host models fully within our enterprise network without sending any data to external Databricks-managed services?
+	3.	How does Databricks handle model endpoint isolation and private network integration (e.g., Azure Private Link)?
+	4.	In the event of multi-region deployments, how is model replication and latency handled?
+
+⸻
+
+B. Data Access & Governance
+	5.	How can Unity Catalog be leveraged for granular access control over both model artifacts and training data?
+	6.	What is the audit trail capability for model execution — can we track who accessed a model and what inputs/outputs were generated?
+	7.	For hosted models, where exactly are interaction logs and inference requests stored, and how long are they retained?
+
+⸻
+
+C. Compliance & Security
+	8.	What certifications (SOC 2, ISO 27001, etc.) and compliance controls apply to Databricks Hosted Models?
+	9.	Can Databricks support regional data residency requirements so that no data leaves a given jurisdiction?
+	10.	How does Databricks handle PII masking or filtering for inputs and outputs processed by hosted models?
+
+⸻
+
+D. AI/BI Genie & Application Integration
+	11.	For AI/BI Genie interactions, what is the data flow — specifically, where are prompts, queries, and generated responses stored?
+	12.	Are these stored ephemerally or persistently? Can storage be fully disabled?
+	13.	Can Genie integrate with enterprise authentication and custom role-based access control?
+
+⸻
+
+E. Development, MLOps & Deployment
+	14.	How can MLflow be configured for multi-team collaboration while maintaining model versioning and access control boundaries?
+	15.	What is the recommended CI/CD pipeline design for deploying models into production in Databricks using MLOps best practices?
+	16.	Are there deployment patterns to minimize downtime during model upgrades or retraining cycles?
+
+⸻
+
+F. Vector Databases & Storage
+	17.	Where exactly is the vector database hosted in a Databricks setup — customer-managed or Databricks-managed infrastructure?
+	18.	What types of metadata and embeddings are stored, and can we enforce data encryption at rest & in transit?
+	19.	Is page-level or document-level chunking supported, and can the chunk identifiers map to business-specific keys (e.g., page numbers)?
+
+⸻
+
+G. Python & Package Management
+	20.	For open-source Python packages not natively available in Databricks, what is the process for installing and managing dependencies in a controlled, secure manner?
+	21.	Are there sandbox or isolated cluster options for testing custom packages before production rollout?
+
+⸻
+
+If you want, I can also convert this into a visually structured meeting prep sheet with categories, a table for “Question | Purpose | Expected Databricks Input,” so your technical team can track responses easily. This format tends to be very effective in vendor meetings.
