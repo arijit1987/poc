@@ -1,0 +1,61 @@
+Got it — I’ll prepare you a consolidated single slide that shows:
+	•	What MCP Servers are
+	•	How to configure them in Databricks (both managed MCP Beta and free-tier workarounds)
+	•	How MCP interacts with Databricks Agents, Genie, UC Functions, and Vector Search
+	•	A detailed architecture diagram showing the data and function flow.
+
+⸻
+
+Slide Content – “MCP Servers in Databricks: Usage & Architecture”
+
+⸻
+
+1. What is MCP (Model Context Protocol)?
+	•	Definition: An open standard for connecting external tools, databases, APIs, and functions to an LLM.
+	•	In Databricks: MCP servers act as connectors between Databricks agents (or Genie) and UC Functions, Vector Search indexes, or external services.
+	•	Benefit: Allows LLM agents to call code, run queries, or fetch data dynamically during a conversation.
+
+⸻
+
+2. Usage in Databricks
+
+Two main configurations:
+	1.	Managed MCP Servers (Beta)
+	•	Requires Pro+ Databricks plan
+	•	Must enroll in MCP Servers Beta via Databricks support
+	•	Hosted by Databricks, fully integrated with Playground, Genie Spaces, Agents
+	2.	Self-hosted MCP Servers (Free Tier Workaround)
+	•	Host MCP server locally or in cloud (VM, Azure, etc.)
+	•	Expose via HTTP/WebSocket to Databricks Agent
+	•	Use “Add Your Own Tool” → connect to MCP endpoint
+
+⸻
+
+3. MCP Configuration Steps (Managed Beta)
+	1.	Request MCP Servers Beta entitlement
+	2.	Go to Playground → Add Tool → MCP Servers
+	3.	Select MCP server source (UC Functions, Vector Search, Genie Spaces, or custom endpoint)
+	4.	Save & Test in Playground or Genie
+
+⸻
+
+4. Detailed MCP–Databricks Flow Diagram
+
+
+             ┌──────────────────────────┐
+             │     Databricks Agent      │
+             │  (LLM in Playground/Genie)│
+             └──────────────┬────────────┘
+                            │
+                MCP Protocol Calls (JSON-RPC)
+                            │
+             ┌──────────────┴──────────────┐
+             │         MCP Server           │
+             │  (Managed or Self-hosted)    │
+             └──────────────┬──────────────┘
+                │           │           │
+   ┌────────────┘           │           └───────────────┐
+   ▼                        ▼                           ▼
+UC Functions       Vector Search Indexes        External APIs/Tools
+(Execute SQL,      (Retrieve context docs)      (Custom REST, AI APIs,
+Python, ML)                                     3rd party data)
