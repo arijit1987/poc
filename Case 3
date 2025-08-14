@@ -1,0 +1,13 @@
+Current Manual System & Challenges
+	1.	Screeners manually check Google hits from DDIQ that are not auto-adjudicated.
+	2.	Each hit’s source article is opened and fully read to assess relevance.
+	3.	Long-form content review takes significant time, especially for multiple hits.
+	4.	Fatigue may cause oversight of key facts or context.
+	5.	No quick way to triage or prioritize articles based on likely risk relevance.
+
+AI Benefits & Requirements (RAG, LangChain, AI Agents)
+	1.	Document Retrieval Agent (LangChain) fetches full article text from DDIQ hit URLs and cleans it for processing.
+	2.	RAG Pipeline indexes AML/KYC policy guidelines and prior adjudication decisions in a vector database to ground AI summaries with compliance context.
+	3.	Summarization Agent uses a fine-tuned LLM to create concise, risk-focused summaries and highlight key entities, aligning with adjudication criteria.
+	4.	Classification & Prioritization Agent scores each summary for probable risk relevance, enabling triage before human review.
+	5.	Governance & Integration: Secure API connectors to DDIQ, encrypted storage for articles/summaries, Unity Catalog-based access control, and full audit logging of AI reasoning outputs.
