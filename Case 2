@@ -1,0 +1,13 @@
+Current Manual Process & Challenges
+	1.	Analysts manually run multiple product-specific T24 reports on a T+1 basis, downloading each separately.
+	2.	eKYC reports are extracted manually at the start of each month and used for the entire month.
+	3.	Manual matching of T24 transactions with CPDAP country risk lists to flag high-risk jurisdictions and tax havens.
+	4.	High-value/low-value transaction flagging and “new-to-bank” customer identification done via manual spreadsheet operations.
+	5.	Customers whose risk ratings change mid-month are missed due to no automated re-check, creating compliance gaps.
+
+AI Adoption – Benefits & Requirements (RAG, LangChain, AI Agents)
+	1.	Automated T24 Ingestion Agent: Uses LangChain tools to schedule and retrieve all T24 product-specific reports in parallel, normalizing into Delta tables.
+	2.	Dynamic eKYC Integration Agent: Fetches eKYC updates daily or on-change events, automatically re-evaluating customers whose risk status changes mid-month.
+	3.	RAG for Risk Rule Application: Retrieves CPDAP risk criteria, tax haven lists, and compliance guidelines from a vector database to apply consistent, explainable rules to T24 data.
+	4.	Risk Scoring & Sampling Agent: Combines T24, eKYC, and CPDAP data to generate composite risk scores, auto-select samples for review, and prioritize high-risk cases.
+	5.	Governance & Infrastructure: Requires secure connectors to T24/eKYC systems, vector DB (Databricks Vector Search/FAISS), Unity Catalog for PII governance, full audit logging, and Delta Live Tables for data freshness.
