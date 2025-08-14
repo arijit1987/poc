@@ -1,0 +1,13 @@
+Current Manual Process & Challenges
+	1.	Analysts manually extract entity names from diverse supporting documents, often in varied formats (PDF, Word, scans).
+	2.	Manual entry of these entities into Actimize ODS for screening, leading to repetitive data handling.
+	3.	Screening results from Actimize are retrieved individually for each entity or batch.
+	4.	Results are manually compiled from multiple sources into a single report or PDF.
+	5.	The process is time-consuming, prone to human error, and lacks audit-ready traceability for large volumes.
+
+AI Adoption – Benefits & Requirements (RAG, LangChain, AI Agents)
+	1.	OCR + Entity Extraction Agent: Uses OCR to digitize scanned/structured documents, applies NER models to identify entity names, and validates against customer master data.
+	2.	Actimize Integration Agent: Automates entity list submission to Actimize ODS APIs, schedules runs, and monitors screening job completion.
+	3.	RAG for Policy-Grounded Screening: Retrieves and applies compliance rules, watchlist details, and screening thresholds from indexed AML/KYC policies stored in a vector DB.
+	4.	Result Aggregation Agent: Automatically fetches screening outputs, merges them, applies RAG-based contextual notes, and compiles into a single standardized PDF report.
+	5.	Infrastructure & Governance: Requires connectors to document repositories and Actimize API, LangChain orchestration for multi-agent workflows, Delta tables for intermediate storage, Unity Catalog for PII governance, and full audit logging of AI reasoning and actions.
