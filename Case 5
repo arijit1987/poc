@@ -1,0 +1,13 @@
+Current Manual Process & Challenges
+	1.	Manual rescreening of transactions is triggered based on value dates, requiring analysts to re-run the same data sets.
+	2.	Comparison of current screening results with initial results is done manually to identify any changes.
+	3.	No-change scenarios still require human validation, wasting time and resources.
+	4.	Manual tracking and tagging of historical screening and mitigation comments for each customer.
+	5.	Repeated mitigation work is required for the same hits due to lack of automated historical match referencing.
+
+AI Adoption – Benefits & Requirements (RAG, LangChain, AI Agents)
+	1.	Rescreening Orchestration Agent: Automates scheduling of rescreens based on value dates and transaction metadata using LangChain workflows.
+	2.	Result Comparison Agent: Automatically compares new screening outputs with historical records, identifies changes, and triggers conditional workflows (notify or escalate).
+	3.	RAG-powered Context Retrieval: Retrieves historical screening decisions, mitigation notes, and customer-specific tagging from a vector database to guide decision logic.
+	4.	Notification & Escalation Agent: Sends automated “no change” notifications or routes “changes detected” cases for manual mitigation via API integrations with case management tools.
+	5.	Governed Data Infrastructure: Requires API connectors to screening tools, Delta tables for storing historical decisions, Unity Catalog for secure PII handling, embedding pipelines for historical notes, and full audit logging of AI-driven comparisons and decisions.
