@@ -83,3 +83,131 @@ Centralized feature store for consistency.
 Automated monitoring for fraud/credit drift detection.
 
 Regulatory-grade governance embedded in model pipelines.
+
+
+
+
+
+
+
+
+What is a Data Clean Room?
+
+A Data Clean Room (DCR) is a secure, privacy-preserving computing environment where multiple organizations can collaborate on data analysis without exposing or directly sharing their raw data with each other.
+
+Think of it as a "neutral, locked vault" where data is brought in, processed securely, and only aggregated, anonymized, or approved outputs are released.
+
+How It Works (Simplified Flow)
+
+Organizations Upload Encrypted Data → into the clean room platform.
+
+Data Normalization & Security Controls → enforce anonymization, masking, access rules.
+
+Joint Analytics / Queries Run → machine learning, aggregations, or statistical analysis.
+
+Aggregated Results Exported → no raw records leave the clean room.
+
+
+
+What is Azure Confidential Computing?
+
+Azure Confidential Computing is a Microsoft cloud capability that protects data in use by running computations inside Trusted Execution Environments (TEEs), also known as secure enclaves.
+
+Unlike traditional encryption that only protects data at rest (storage) and data in transit (network), confidential computing ensures that even while being processed in memory, the data remains encrypted and inaccessible to unauthorized parties.
+
+How It Works
+
+Application Code & Data Loaded → into a secure enclave.
+
+Enclave Encrypts & Isolates Data → even the OS/hypervisor cannot access it.
+
+Processing Happens Inside Enclave → decrypted only within protected memory.
+
+Results Are Encrypted/Released → ensuring sensitive information never leaks.
+
+
+
+What is AI & BI Democratization?
+
+AI & BI Democratization means making advanced analytics and AI capabilities accessible to all employees, not just data scientists or technical teams.
+It’s about enabling self-service insights through natural language interfaces, low-code tools, and governed BI platforms, so decision-making becomes data-driven across the organization.
+
+Think of it as giving every employee the ability to “talk to data” and get answers, while still ensuring governance, compliance, and accuracy.
+
+How It Works
+
+Data Prepared & Governed → curated datasets with lineage, quality checks.
+
+Accessible via Conversational Interfaces → chatbots, AI copilots, Power BI Q&A.
+
+Embedded AI/ML Models → provide predictive insights inside dashboards/apps.
+
+Decision-Making Empowered → employees across functions use insights daily.
+
+
+
+What are Vector Databases and Retrieval-Augmented Generation (RAG)?
+Definition
+
+Vector Databases are specialized databases that store and search embeddings (numeric vector representations of text, images, audio, etc.) to find items by meaning rather than exact keywords.
+
+Retrieval-Augmented Generation (RAG) is an AI framework where an LLM retrieves relevant context from a vector database before generating an answer, ensuring accuracy and compliance.
+
+
+How It Works
+
+User Query → Converted into an embedding (vector).
+
+Vector Database Search → Finds most relevant documents/snippets.
+
+Augmentation → Retrieved documents are appended to the prompt.
+
+LLM Generation → Produces a grounded answer with context.
+
+Response with Citations (Optional) → Provides references for compliance/audit.
+
+
+
+What is Quantum Computing Preparedness?
+Definition
+
+Quantum Computing Preparedness refers to the proactive measures organizations take to anticipate and mitigate risks posed by quantum computing—especially the risk that quantum algorithms could break today’s cryptographic systems.
+
+It ensures that enterprises are ready to adopt post-quantum cryptography (PQC) and maintain crypto-agility so systems remain secure in a future where quantum
+
+
+How It Works
+
+Cryptographic Inventory – Identify all systems, applications, APIs, and databases that rely on classical cryptography.
+
+Risk Assessment – Evaluate which components are most exposed to quantum threats.
+
+Pilot Post-Quantum Algorithms – Test NIST PQC standards (lattice-based, hash-based, multivariate).
+
+Implement Crypto-Agility Framework – Build modular systems where encryption algorithms can be upgraded seamlessly.
+
+Regulatory & Compliance Alignment – Ensure adherence to central bank, ISO, and cybersecurity mandates.
+
+
+
+What is Advanced Machine Learning Operations (MLOps)?
+Definition
+
+Advanced MLOps is the evolution of traditional DevOps practices into the machine learning lifecycle.
+It covers end-to-end automation, monitoring, governance, and scalability of ML models in production.
+While basic MLOps focuses on CI/CD for ML models, advanced MLOps adds capabilities like explainability, bias detection, security, and compliance — making it enterprise-ready.
+
+
+How It Works
+
+Data Pipeline Setup – Automated ETL/ELT workflows prepare clean, versioned data.
+
+Model Development & Training – Models are trained with CI/CD integration.
+
+Validation & Explainability – Models undergo fairness, interpretability, and robustness checks.
+
+Deployment (CI/CD for ML) – Models are deployed via APIs, containers, or serverless endpoints.
+
+Monitoring & Drift Detection – Track accuracy, bias, data drift, and retrain when necessary.
+
+Governance Layer – Audit logs, lineage, and approval workflows ensure compliance.
