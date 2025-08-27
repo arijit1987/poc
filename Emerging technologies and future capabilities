@@ -1,0 +1,85 @@
+Slide 1 – Emerging Data & AI Capabilities for Future Banking
+Data Clean Rooms
+
+Definition: Secure, privacy-preserving environments that allow multiple institutions to perform joint analytics without exposing raw data.
+
+Facilitation: Use encrypted computation and access controls to enable AML monitoring, credit risk collaboration, and market intelligence across entities.
+
+Use Cases:
+
+Detect suspicious AML patterns without sharing sensitive customer data.
+
+Pool data for credit risk stress testing under strict confidentiality.
+
+Share competitive intelligence insights safely.
+
+Azure Confidential Computing
+
+Definition: Leverages Trusted Execution Environments (TEEs) to protect data while in use, ensuring confidentiality during processing.
+
+Facilitation: Deploy critical workloads (fraud detection, cash management, KYC) in Azure enclave-protected VMs.
+
+Use Cases:
+
+Secure payment instructions and customer PII on Azure.
+
+Train fraud/KYC ML models on encrypted data.
+
+Ensure regulatory reporting compliance through data isolation.
+
+AI & BI Democratization
+
+Definition: Make analytics accessible to business teams via natural language interfaces and embedded AI-driven insights.
+
+Facilitation: Expand Power BI with governance, integrate conversational analytics and embed AI insights into existing workflows.
+
+Use Cases:
+
+Query curated datasets in plain language.
+
+Integrate AI-driven recommendations into apps.
+
+Enable self-service BI with strict governance & role-based access.
+
+Slide 2 – Advanced AI Governance & Strategic Readiness
+Vector Databases & Retrieval-Augmented Generation (RAG)
+
+Definition: Use semantic vector search to improve generative AI responses with grounded, compliant, and accurate sources.
+
+Facilitation: Build enterprise-grade RAG pipelines integrated with policy documents and internal knowledge bases.
+
+Use Cases:
+
+Regulatory & policy Q&A with authoritative citations.
+
+Automating document processing (onboarding, loans, contracts).
+
+Knowledge assistants for employees with cited responses.
+
+Quantum Computing Preparedness
+
+Definition: Anticipating risks quantum computing poses to cryptographic systems; ensuring crypto-agility and resilience.
+
+Facilitation: Maintain an enterprise-wide cryptographic inventory and test quantum-safe algorithms.
+
+Use Cases:
+
+Identify cryptographic dependencies across systems.
+
+Run pilots with post-quantum encryption standards.
+
+Implement frameworks for seamless algorithm updates.
+
+Advanced Machine Learning Operations (MLOps)
+
+Definition: A governance and operational framework ensuring AI/ML models are reliable, compliant, and auditable.
+
+Facilitation: Standardize model development pipelines, embed governance & monitoring into ML lifecycle.
+
+Use Cases:
+
+Centralized feature store for consistency.
+
+Automated monitoring for fraud/credit drift detection.
+
+Regulatory-grade governance embedded in model pipelines.
