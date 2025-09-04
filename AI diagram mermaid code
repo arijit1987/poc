@@ -304,3 +304,52 @@ flowchart TB
     Env1 -- Sends Metrics --> Monitor
     Env2 -- Sends Metrics --> Monitor
 
+
+
+Access Control Diagram
+
+
+flowchart TD
+    %% Define Styles for different elements
+    classDef userGroup fill:#f9f,stroke:#333,stroke-width:2px,color:black
+    classDef azureService fill:#74c2f7,stroke:#333,stroke-width:1px,color:black
+    classDef resource fill:#9f9,stroke:#333,stroke-width:1px,color:black
+    classDef dataStore fill:#ff9,stroke:#333,stroke-width:1px,color:black
+
+    %% User Groups
+    subgraph UserGroups [User Groups]
+        Admins[Admins]
+        Developers[Developers]
+        BusinessUsers[Business Users]
+    end
+
+    %% Identity Provider
+    AAD[Azure AD Identity Provider]
+
+    %% RBAC Roles and Resources
+    subgraph RBAC_Resources [RBAC Roles & Resources]
+        RBAC_Databricks[RBAC: Databricks Workspace]
+        RBAC_Storage[RBAC: Storage Account]
+        RBAC_VectorDB[RBAC: Vector DB]
+    end
+
+    %% Data Access & Secrets
+    UC[Unity Catalog<br/>Data Access Management]
+    AKV[Azure Key Vault<br/>Secrets Management]
+
+    %% Define the authentication and authorization flow
+    UserGroups -- "Authentication Request" --> AAD
+
+    AAD -- "Assigns Roles &<br/>Grants Authorization" --> RBAC_Resources
+
+    RBAC_Databricks -- "Manages Access Via" --> UC
+    RBAC_Storage -- "Manages Access Via" --> UC
+    RBAC_VectorDB -- "Manages Access Via" --> UC
+
+    RBAC_Resources -- "Retrieves Secrets From" --> AKV
+
+    %% Apply Styles
+    class Admins,Developers,BusinessUsers userGroup
+    class AAD,AKV azureService
+    class RBAC_Databricks,RBAC_Storage,RBAC_VectorDB resource
+    class UC dataStore
