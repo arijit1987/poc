@@ -1,0 +1,306 @@
+Technology Stack
+
+flowchart TD
+    subgraph StorageLayer [Storage Layer]
+        ADLS[Azure Data Lake Gen2<br/>with Delta Lake]
+    end
+
+    subgraph VectorDBLayer [Vector Database Layer]
+        DB_UC[Databricks UC Vector Index]
+        Cosmos[Azure Cosmos DB<br/>with MongoDB vCore]
+        Chroma[Chroma DB]
+    end
+
+    subgraph ComputeLayer [Compute & AI Models Layer]
+        Databricks[Databricks<br/>Compute Engine]
+        Azure_OpenAI[Azure OpenAI<br/>LLMs & Embeddings]
+        Azure_ML[Azure Machine Learning<br/>Custom Models]
+    end
+
+    subgraph AIServicesLayer [AI Services Layer]
+        Translator[Azure Translator]
+        Speech[Azure Speech Service]
+        DocIntel[Azure Document Intelligence]
+    end
+
+    subgraph DevOpsLayer [DevOps & CI/CD Layer]
+        Azure_DevOps[Azure DevOps<br/>Pipelines & Repos]
+        VS_Code[VS Code<br/>Development]
+    end
+
+    subgraph GovLayer [AI Governance Layer]
+        Unity_Catalog[Unity Catalog<br/>Lineage & Access]
+        Content_Safety[Azure AI Content Safety]
+        AI_Gateway[AI Gateway<br/>Traffic Control]
+    end
+
+    %% Data Flow
+    ADLS --> VectorDBLayer
+    VectorDBLayer --> ComputeLayer
+    ComputeLayer --> AIServicesLayer
+
+    %% Control & Support Flow
+    DevOpsLayer -- CICD & Deployment --> ComputeLayer
+    GovLayer -- Governance & Policy --> AIServicesLayer
+    GovLayer -- Governance & Policy --> ComputeLayer
+
+
+functional Architechtural Diagram
+
+flowchart LR
+    subgraph Sources [Data Sources]
+        direction LR
+        DBs[Databases]
+        Files[Files<br/>PDF, DOCX, etc.]
+        Streams[Streaming Data<br/>Kafka, Event Hubs]
+    end
+
+    subgraph Ingestion [Data Ingestion Layer]
+        direction TB
+        Batch[Batch Ingestion<br/>Azure Data Factory]
+        Streaming[Streaming Ingestion<br/>Azure Stream Analytics]
+    end
+
+    subgraph Processing [Data Processing Layer]
+        Databricks_Jobs[Databricks Jobs & Notebooks<br/>Data Cleansing, Feature Engineering]
+    end
+
+    subgraph Vectorization [Vector DB & Indexing]
+        VectorDB[(Vector Database<br/>Chroma/Cosmos DB)]
+        Indexing[Embedding & Indexing Job]
+    end
+
+    subgraph Orchestration [AI Agents / Orchestration Layer]
+        Agent[AI Agent / Orchestrator<br/>e.g., Semantic Kernel]
+        Gateway[AI Gateway<br/>Proxy & Routing]
+    end
+
+    subgraph Consumers [Consumer Applications]
+        direction TB
+        Chatbot[Chatbot Interface]
+        BI[BI Tools - Power BI]
+        Reports[Custom Reports]
+    end
+
+    subgraph Human [Human-in-the-Loop]
+        Feedback[Feedback & Validation UI]
+    end
+
+    %% Main Data Flow
+    Sources --> Ingestion
+    Ingestion --> Processing
+    Processing --> Indexing
+    Indexing --> VectorDB
+    VectorDB --> Gateway
+    Gateway --> Agent
+    Agent --> Consumers
+
+    %% Feedback Loop
+    Consumers --> Human
+    Human -- Feedback Data --> Agent
+
+
+Network and Security Diagram
+
+flowchart TB
+    subgraph OnPrem [On-Premise Network]
+        User[Users]
+    end
+
+    subgraph Cloud [Azure Virtual Network VNet]
+        subgraph Subnet1 [Databricks Subnet]
+            DB_Cluster[Databricks Cluster]
+        end
+
+        subgraph Subnet2 [AI Gateway Subnet]
+            AI_GW[AI Gateway VM/App]
+            FW[Firewall / NSG]
+        end
+
+        subgraph Subnet3 [Private Endpoint Subnet]
+            PEP_Cosmos[Private Endpoint<br/>Cosmos DB]
+            PEP_OpenAI[Private Endpoint<br/>Azure OpenAI]
+            PEP_Storage[Private Endpoint<br/>Storage Account]
+        end
+    end
+
+    subgraph AzureServices [Azure PaaS Services]
+        CosmosDB[Cosmos DB]
+        AzureAI[Azure AI Services]
+        Storage[ADLS Gen2]
+        AAD[Azure Active Directory]
+        KeyVault[Azure Key Vault]
+    end
+
+    %% Network Connections
+    OnPrem -- VPN / ExpressRoute --> Cloud
+    DB_Cluster -- VNet Injection --> Subnet1
+    DB_Cluster --> AI_GW
+    AI_GW --> FW
+
+    FW -- Private Endpoint --> PEP_Cosmos
+    FW -- Private Endpoint --> PEP_OpenAI
+    FW -- Private Endpoint --> PEP_Storage
+
+    PEP_Cosmos -.-> CosmosDB
+    PEP_OpenAI -.-> AzureAI
+    PEP_Storage -.-> Storage
+
+    %% Access Control Flow
+    User -- Authenticate --> AAD
+    AAD -- Authorize --> RBAC[RBAC Roles]
+    RBAC -- Grants Access --> Databricks_Workspace[Databricks Workspace]
+    RBAC -- Grants Access --> Storage
+    RBAC -- Grants Access --> CosmosDB
+
+    Unity_Catalog_Acc[Unity Catalog] -- Data Permissions --> Storage
+    KeyVault -- Provides Secrets --> DB_Cluster
+    KeyVault -- Provides Secrets --> AI_GW
+
+
+Data Management 
+
+flowchart LR
+    subgraph Sources [Data Sources]
+        S_Files[Files]
+        S_DB[Databases]
+        S_Stream[Streams]
+    end
+
+    subgraph Ingestion [Ingestion Pipelines]
+        I_Batch[Batch ADF Pipeline]
+        I_Stream[Real-Time Stream Pipeline]
+    end
+
+    subgraph Storage [Storage Layer]
+        ADLS[ADLS Gen2<br/>Bronze/Silver/Gold]
+        Delta[Delta Lake Format]
+    end
+
+    subgraph Governance [Governance & Lifecycle]
+        UC[Unity Catalog<br/>Metadata & Lineage]
+        Lifecycle[Lifecycle Management<br/>Backup, Tiering, Archival]
+    end
+
+    subgraph Compliance [Compliance & Privacy]
+        PII[PII Masking Engine]
+        Encryption[Encryption-at-Rest]
+        ComplianceModule[Compliance Scanner]
+    end
+
+    Sources --> Ingestion
+    Ingestion --> Storage
+    Storage --> Governance
+    Governance --> Compliance
+    Compliance -->|Audit Results| Governance
+
+
+Logging and Monitoring
+
+
+flowchart TB
+    subgraph Sources [Log Sources]
+        App[Application Logs]
+        AI_Gateway[AI Gateway Logs]
+        Databricks[Databricks Logs]
+        AI_Services[Azure AI Services Logs]
+    end
+
+    subgraph Collection [Collection & Analysis]
+        Azure_Monitor[Azure Monitor<br/>Log Analytics Workspace]
+        MLflow[MLflow Tracking Server]
+    end
+
+    subgraph Storage [Log Storage]
+        Log_Storage[ADLS Gen2<br/>Logs Container]
+        UC_Governance[Unity Catalog<br/>Governance]
+    end
+
+    subgraph Visualization [Visualization & Alerting]
+        Dashboard[Dashboards<br/>Power BI / Grafana]
+        Alerts[Alerting System<br/>Email, SMS, Teams]
+    end
+
+    Sources -->|Writes Logs| Collection
+    Collection -->|Archives Raw Logs| Storage
+    Collection -->|Sends Metrics & Logs| Visualization
+    Storage -- Governs Access --> UC_Governance
+
+
+AI Guardrails
+
+
+flowchart LR
+    User_Input[User Input] --> AI_Gateway
+
+    subgraph AI_Gateway [AI Gateway with Filters]
+        direction TB
+        Content_Safety[Azure AI Content Safety]
+        Llama_Guard[Llama Guard Filter]
+        Presidio[Microsoft Presidio<br/>PII Detection]
+        Policy_Engine[Policy Engine]
+    end
+
+    subgraph Audit [Audit & Compliance]
+        Audit_Logs[Audit Log Storage]
+    end
+
+    AI_Model[Azure OpenAI / Other Model]
+
+    User_Input --> AI_Gateway
+    AI_Gateway -- Filtered & Safe Request --> AI_Model
+    AI_Model -- Response --> AI_Gateway
+    AI_Gateway -- Filtered & Safe Response --> User_Output[User Output]
+
+    Policy_Engine -- Evaluates Against Rules --> AI_Gateway
+    AI_Gateway -- Logs All Requests/Responses --> Audit_Logs
+
+
+
+Application Hosting 
+
+
+flowchart TB
+    subgraph VendorHosting [Vendor Product Hosting]
+        subgraph Env1 [Production Environment]
+            VM_Prod[Azure VMs<br/>D4s v3]
+            AppService_Prod[App Service<br/>P2v2]
+        end
+        subgraph Env2 [Staging Environment]
+            VM_Staging[Azure VMs<br/>D2s v3]
+            AppService_Staging[App Service<br/>P1v2]
+        end
+
+        API[API Management<br/>Integration]
+        Monitor[Azure Monitor<br/>Alerting]
+    end
+
+    subgraph InHouse [In-house Development]
+        Developer[Developers<br/>VS Code / IntelliJ]
+        DevOps_Pipeline[Azure DevOps Pipeline]
+        Git_Repo[Git Repository]
+        Dev_Cluster[Databricks Dev Cluster]
+        CICD_Tools[CI/CD Agents]
+    end
+
+    subgraph Artifacts [Deployment Artifacts]
+        Docker_Image[Docker Container Image]
+        Wheel_File[Python Wheel File]
+        DB_Deploy[Databricks Deployment Bundle]
+    end
+
+    %% Development Flow
+    Developer -- Commits Code --> Git_Repo
+    Git_Repo -- Triggers --> DevOps_Pipeline
+    DevOps_Pipeline -- Uses --> CICD_Tools
+    DevOps_Pipeline -- Builds --> Artifacts
+
+    %% Deployment Flow
+    DevOps_Pipeline -- Deploys to Staging --> Env2
+    Env2 -- Validation & Testing --> Monitor
+    DevOps_Pipeline -- Promotes to Prod --> Env1
+
+    %% Monitoring
+    Env1 -- Sends Metrics --> Monitor
+    Env2 -- Sends Metrics --> Monitor
+
