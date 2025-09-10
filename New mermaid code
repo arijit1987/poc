@@ -1,0 +1,93 @@
+flowchart TD
+    classDef dev fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#0d47a1
+    classDef build fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20
+    classDef debug fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#e65100
+    classDef deploy fill:#fce4ec,stroke:#c2185b,stroke-width:2px,color:#880e4f
+    
+    subgraph DEBUGGER[🔧 Debugger Artifacts]
+        direction TB
+        D1[fa:fa-bug Debugger: Artifacts]
+        D2[fa:fa-cube Docker Container Image]
+        D3[fa:fa-cog Python Wheel File]
+        D4[fa:fa-database Databricks Deployment Bundle]
+    end
+    
+    subgraph DEVELOPMENT[💻 Development]
+        direction TB
+        DEV1[fa:fa-code Developers VS Code / IntelliJ]
+        DEV2[fa:fa-code-fork Commits Code]
+        DEV3[fa:fa-git Git Repository]
+    end
+    
+    subgraph CICD[🔄 CI/CD Pipeline]
+        direction TB
+        C1[fa:fa-bolt Triggers]
+        C2[fa:fa-wrench Azure DevOps Pipeline]
+        C3[fa:fa-gears Builds]
+        C4[fa:fa-rocket Uses Debugger Artifacts]
+    end
+    
+    subgraph DEPLOYMENT[🚀 Deployment]
+        direction TB
+        DEP1[fa:fa-cloud-upload Deploys to Staging]
+        DEP2[fa:fa-check-circle Validation & Testing]
+        DEP3[fa:fa-exchange API Management Integration]
+        DEP4[fa:fa-arrow-up Promotes to Production]
+    end
+    
+    subgraph DATABRICKS[🔮 Databricks Environment]
+        direction TB
+        DB1[fa:fa-server Databricks Dev Cluster]
+        DB2[fa:fa-cogs CI/CD Agents]
+    end
+    
+    DEBUGGER --> CICD
+    DEVELOPMENT --> CICD
+    CICD --> DEPLOYMENT
+    CICD --> DATABRICKS
+    DATABRICKS --> DEPLOYMENT
+    
+    class DEBUGGER debug
+    class DEVELOPMENT dev
+    class CICD build
+    class DEPLOYMENT deploy
+    class DATABRICKS build
+
+
+
+
+
+
+
+flowchart TD
+    classDef staging fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20
+    classDef production fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#b71c1c
+    classDef monitoring fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#e65100
+    
+    subgraph STAGING[🟡 Staging Environment]
+        direction TB
+        S1[fa:fa-server Azure VMs D5x v3]
+        S2[fa:fa-globe App Service Ptx2]
+        S3[fa:fa-check-square Validation & Testing]
+        S4[fa:fa-plug API Management Integration]
+    end
+    
+    subgraph PRODUCTION[🟢 Production Environment]
+        direction TB
+        P1[fa:fa-server Azure VMs D4x v3]
+        P2[fa:fa-globe App Service Ptx2]
+    end
+    
+    subgraph MONITORING[📊 Monitoring & Alerting]
+        direction TB
+        M1[fa:fa-chart-line Some Metrics]
+        M2[fa:fa-bell Azure Monitor Alerting]
+        M3[fa:fa-bar-chart Apps Metrics]
+    end
+    
+    STAGING --> PRODUCTION
+    PRODUCTION --> MONITORING
+    
+    class STAGING staging
+    class PRODUCTION production
+    class MONITORING monitoring
