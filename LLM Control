@@ -1,0 +1,90 @@
+1. Key & Credential Management
+	•	What it means: Who controls the secrets (API keys, access tokens, encryption keys) that allow access to models?
+	•	Controls available:
+	•	Azure Key Vault / Databricks Secrets: Store all sensitive credentials.
+	•	Customer-Managed Keys (CMK): Replace platform-managed keys with your own HSM-backed keys.
+	•	Rotate & expire keys regularly.
+	•	Impact: Prevents unauthorized access, ensures cryptographic control of data and models.
+
+🔗 Databricks CMK | Azure AI CMK
+
+⸻
+
+2. Encryption Controls
+	•	At rest: Encrypt all stored model weights, fine-tuning data, logs, and results. Use CMKs for sensitive workloads.
+	•	In transit: Use TLS 1.2+ for all API calls, possibly mTLS (mutual TLS) for high-sensitivity.
+	•	Granular control: Decide what is encrypted with platform keys vs your own HSM keys.
+	•	Impact: Stops data leakage if storage or communication is compromised.
+
+🔗 Azure encryption overview
+
+⸻
+
+3. Authentication & Identity Controls
+	•	Azure Entra ID / Databricks OAuth: Federated identity to prevent local password management.
+	•	Service Principals & Managed Identities: Machine-to-machine secure calls, avoiding static keys.
+	•	Personal Access Tokens (PATs): Only for development; production should use service principals.
+	•	RBAC (Role-Based Access Control): Define who can call the LLM, who can deploy models, and who can access logs.
+
+🔗 Databricks Auth | Azure AI RBAC
+
+⸻
+
+4. Network & Segmentation Controls
+	•	Private Endpoints / VNet Integration: Ensure LLM traffic never traverses public internet.
+	•	Subnet isolation: Dedicated subnets for LLM inference, separate from dev/test.
+	•	Firewall rules & NSGs: Restrict inbound/outbound to approved IPs or services.
+	•	Dedicated compute: Prevent “noisy neighbor” or multi-tenant risks.
+
+🔗 Databricks Networking | Azure AI Foundry VNet
+
+⸻
+
+5. Governance & Data Controls
+	•	Data residency & compliance: Ensure model and logs are stored only in allowed regions.
+	•	Data classification & filtering: Tag sensitive data, block PII from being sent to LLMs.
+	•	Prompt Injection Defense: Guardrails against malicious queries that try to exfiltrate data.
+	•	Retention policies: Decide how long prompts, completions, and logs are retained.
+
+🔗 Azure AI governance
+
+⸻
+
+6. Monitoring & Audit Controls
+	•	Audit logs: Who accessed which LLM, with what data, and what response.
+	•	Observability: Latency, token usage, model drift, anomalous responses.
+	•	Usage quotas & throttling: Control cost & abuse.
+	•	Red teaming & testing: Validate against jailbreaks, prompt leaks, bias.
+
+🔗 Azure Monitor for AI
+
+⸻
+
+7. Model Lifecycle & Deployment Controls
+	•	Versioning: Always track which model version is in production.
+	•	Approval workflows: Require approvals before new models or fine-tuned versions go live.
+	•	Rollback capability: Revert quickly if a deployment misbehaves.
+	•	Isolation: Separate dev, staging, and prod model endpoints.
+
+🔗 Azure ML Endpoints | Databricks Model Serving
+
+⸻
+
+8. Content & Safety Controls (LLM-specific)
+	•	Input validation: Strip malicious prompts before hitting the model.
+	•	Output filtering: Use Azure AI Content Safety or custom rules to block toxic / harmful responses.
+	•	Guardrails framework: Enforce policies on topics (e.g. “don’t answer financial advice”, “don’t output PII”).
+	•	Rate limiting by user: Prevents abuse or cost blowouts.
+
+🔗 Azure AI Content Safety
+
+⸻
+
+📌 In Short
+
+Think of LLM control mechanisms across five layers:
+	1.	Keys & Identity – Who can even talk to the model?
+	2.	Encryption – Is all data (prompts, responses, logs) cryptographically safe?
+	3.	Network – Can traffic flow only where it’s supposed to?
+	4.	Governance – Are compliance, policies, and data rules enforced?
+	5.	Runtime Safety – Are inputs/outputs monitored, filtered, and logged?
